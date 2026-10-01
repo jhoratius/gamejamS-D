@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
-[ext_resource type="Texture2D" uid="uid://cr0lwkr0l6my6" path="res://assets/ufo_01_192px.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://wddgu6jaiy0m" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://c0vhykhlundww" path="res://assets/draft_01.png" id="2_g2els"]
 
 [node name="player" type="CharacterBody2D" unique_id=388287436]
+scale = Vector2(1.5, 1.5)
 collision_mask = 18
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1194391235]
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_3vyb7")
+texture = ExtResource("2_g2els")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=797953686]
-polygon = PackedVector2Array(-33, -3, -22, -28, 0, -35, 22, -28, 31, -3, 63, 13, 64, 17, -1, 26, -60, 16, -59, 12)
+polygon = PackedVector2Array(-10.666667, -1.3333334, -10.666667, -18.666668, 0, -21.333334, 10.666667, -18.666668, 11.333334, 0, 7.3333335, 9.333334, 6, 21.333334, 0, 22.666668, -6, 21.333334, -7.3333335, 9.333334)
