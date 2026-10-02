@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bnjroety6hbn2"]
+
+[ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://scenes/dice.gd" id="1_tannu"]
+[ext_resource type="Script" uid="uid://cupkxro8youuu" path="res://scenes/dice_area01.gd" id="2_pb8pk"]
+[ext_resource type="Texture2D" uid="uid://dqnhwq4imyuqh" path="res://assets/roll_btn.png" id="2_xak8u"]
+[ext_resource type="Texture2D" uid="uid://dml7frdltoo00" path="res://assets/dice_faces/dice_n1.png" id="3_8eu0n"]
+[ext_resource type="Texture2D" uid="uid://df4bevx3mhwic" path="res://assets/roll_btn_pressed.png" id="3_xak8u"]
+[ext_resource type="Script" uid="uid://c4eo8cspxg8ak" path="res://scenes/dice_area02.gd" id="4_ocjtb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad036"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2yjm"]
+size = Vector2(96, 96)
+
+[node name="main" type="Node" unique_id=511921715]
+script = ExtResource("1_tannu")
+
+[node name="Control" type="Control" parent="." unique_id=685421355]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1, 0)
+
+[node name="Dice01" type="Area2D" parent="Control" unique_id=1127801393]
+script = ExtResource("2_pb8pk")
+
+[node name="roll" type="CenterContainer" parent="Control/Dice01" unique_id=394675516]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 566.0
+offset_top = 260.0
+offset_right = 598.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(16, 16)
+
+[node name="dice" type="TextureRect" parent="Control/Dice01/roll" unique_id=1006454145]
+layout_mode = 2
+texture = ExtResource("3_8eu0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Dice01" unique_id=1793145976]
+position = Vector2(582, 276)
+shape = SubResource("RectangleShape2D_ad036")
+
+[node name="Dice02" type="Area2D" parent="Control" unique_id=844839895]
+script = ExtResource("4_ocjtb")
+
+[node name="roll2" type="CenterContainer" parent="Control/Dice02" unique_id=313031083]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 679.0
+offset_top = 261.0
+offset_right = 711.0
+offset_bottom = 293.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(16, 16)
+
+[node name="dice" type="TextureRect" parent="Control/Dice02/roll2" unique_id=1539527793]
+layout_mode = 2
+texture = ExtResource("3_8eu0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Dice02" unique_id=883080150]
+position = Vector2(695, 277)
+shape = SubResource("RectangleShape2D_b2yjm")
+
+[node name="roll_btn" type="TextureButton" parent="." unique_id=1261632096]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -358.0
+offset_right = 63.0
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("2_xak8u")
+texture_pressed = ExtResource("3_xak8u")
+texture_disabled = ExtResource("2_xak8u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1029475092]
+
+[connection signal="body_entered" from="Control/Dice01" to="Control/Dice01" method="_on_body_entered"]
+[connection signal="body_entered" from="Control/Dice02" to="Control/Dice02" method="_on_body_entered"]
+[connection signal="pressed" from="roll_btn" to="." method="_on_roll_btn_pressed"]
